@@ -31,23 +31,13 @@ obj-m += yt6801.o
 modules:
 	make -C $(KSRC) M=$(PWD) modules
 
-install:
-	@echo "KFILE: " $(KFILE)
-	@echo "KDST: " $(KDST)
-	make -C $(KERNEL_SRC) M=$(PWD) INSTALL_MOD_DIR=$(KERNEL_SRC) modules_install
-	sudo ls -l $(ko_dir)
-	depmod $(shell uname -r)
-	modprobe $(KFILE)
-	@file $(ko_full)
-	@echo install done.
-	@modinfo $(ko_full)
-
-uninstall:
-	sudo ls -l $(ko_dir)
-	sudo rm $(ko_full)
-	sudo ls -l $(ko_dir)
+all:
+	make -C $(KERNEL_SRC) M=$(PWD) modules
 
 clean:
 	make -C $(KERNEL_SRC) M=$(PWD) clean
+
+modules_install:
+	make -C $(KERNEL_SRC) M=$(PWD) modules_install
 
 .PHONY:modules install uninstall clean
