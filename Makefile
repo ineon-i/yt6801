@@ -30,20 +30,20 @@ print_vars:
 
 modules:
 	@echo
-	$(MAKE) -C src/ modules
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules
 	@echo
 
 clean:
 	@echo
-	$(MAKE) -C src/ clean
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) clean
 	@echo
 
 install:
 	@echo
-	$(MAKE) -C src/ install
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) install
 	@echo
 
 uninstall:
 	@echo
-	$(MAKE) -C src/ uninstall
+	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) uninstall
 	@echo
