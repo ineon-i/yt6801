@@ -47,3 +47,6 @@ uninstall:
 	@echo
 	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) uninstall
 	@echo
+
+default:
+    ${MAKE} -C ${KERNEL_SOURCE} M=${PWD} modules
