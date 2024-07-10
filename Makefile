@@ -18,7 +18,7 @@ CCVERSION = $(shell $(CC) -dumpversion)
 
 KVER = $(shell uname -r)
 
-all: print_vars clean modules install
+all: modules
 
 print_vars:
 	@echo
