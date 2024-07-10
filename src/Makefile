@@ -34,7 +34,7 @@ modules:
 install:
 	@echo "KFILE: " $(KFILE)
 	@echo "KDST: " $(KDST)
-	make -C $(KSRC) M=$(PWD) INSTALL_MOD_DIR=$(KDST) modules_install
+	make -C $(KERNEL_SRC) M=$(PWD) INSTALL_MOD_DIR=$(KERNEL_SRC) modules_install
 	sudo ls -l $(ko_dir)
 	depmod $(shell uname -r)
 	modprobe $(KFILE)
@@ -48,6 +48,6 @@ uninstall:
 	sudo ls -l $(ko_dir)
 
 clean:
-	make -C $(KSRC) M=$(PWD) clean
+	make -C $(KERNEL_SRC) M=$(PWD) clean
 
 .PHONY:modules install uninstall clean
