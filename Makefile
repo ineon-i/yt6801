@@ -18,35 +18,8 @@ CCVERSION = $(shell $(CC) -dumpversion)
 
 KVER = $(shell uname -r)
 
-all: modules
-
-print_vars:
-	@echo
-	@echo "CC: " $(CC)
-	@echo "CCVERSION: " $(CCVERSION)
-	@echo "KERNEL_GCC_VERSION: " $(KERNEL_GCC_VERSION)
-	@echo "KVER: " $(KVER)
-	@echo
-
-modules:
-	@echo
-	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) modules
-	@echo
+all:
+	make -C $(KERNEL_SRC) M=$(PWD) modules
 
 clean:
-	@echo
-	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) clean
-	@echo
-
-install:
-	@echo
-	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) install
-	@echo
-
-uninstall:
-	@echo
-	$(MAKE) -C $(KERNEL_SRC) M=$(PWD) uninstall
-	@echo
-
-default:
-    ${MAKE} -C ${KERNEL_SOURCE} M=${PWD} modules
+	make -C $(KERNEL_SRC) M=$(PWD) clean
